@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NorthBridge | Digital Solutions</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">North<span>Bridge</span></div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="/admin" class="admin-link">Admin</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div>
+      <p class="tag">Smart Dynamic Website</p>
+      <h1>Welcome to NorthBridge</h1>
+      <p>Hum businesses ke liye modern, secure aur fast digital solutions banate hain.</p>
+      <a href="#contact" class="btn">Get Started</a>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <h2>Our Services</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Website Development</h3>
+        <p>Responsive business, portfolio aur dynamic websites.</p>
+      </div>
+      <div class="card">
+        <h3>Digital Marketing</h3>
+        <p>SEO, social media aur online growth planning.</p>
+      </div>
+      <div class="card">
+        <h3>IT Support</h3>
+        <p>Technical support, setup aur security guidance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section about">
+    <h2>About NorthBridge</h2>
+    <p>NorthBridge ka goal hai clients ko simple language me powerful technology provide karna. Yeh website dynamic hai kyunki contact form ka data backend me save hota hai aur admin panel me show hota hai.</p>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <form id="contactForm" class="form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <select name="service">
+        <option>Website Development</option>
+        <option>Digital Marketing</option>
+        <option>IT Support</option>
+        <option>Other</option>
+      </select>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+      <p id="formStatus"></p>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2026 NorthBridge. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

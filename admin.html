@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NorthBridge Solutions | Advanced Website</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <a href="#" class="logo">North<span>Bridge</span></a>
+
+    <nav class="navbar" id="navbar">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="themeBtn" class="icon-btn">🌙</button>
+      <button id="menuBtn" class="menu-btn">☰</button>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content reveal">
+      <p class="badge">Advanced Digital Solutions</p>
+      <h1>Build Your Business Online With <span>NorthBridge</span></h1>
+      <p class="hero-text">
+        Hum modern websites, IT support, branding aur digital growth solutions provide karte hain.
+        Fast, secure aur mobile-friendly website ke sath apna business next level par le jaiye.
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn primary">Start Project</a>
+        <a href="#services" class="btn secondary">View Services</a>
+      </div>
+    </div>
+
+    <div class="hero-card reveal">
+      <h3>Live Project Stats</h3>
+      <div class="stat"><span>25+</span><p>Projects Completed</p></div>
+      <div class="stat"><span>99%</span><p>Client Satisfaction</p></div>
+      <div class="stat"><span>24/7</span><p>Support Available</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <p class="section-tag">What We Do</p>
+    <h2>Our Services</h2>
+
+    <div class="grid">
+      <div class="service-card reveal">
+        <div class="icon">💻</div>
+        <h3>Website Development</h3>
+        <p>Business, portfolio, landing page aur responsive website design.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="icon">🔐</div>
+        <h3>Cyber Security Setup</h3>
+        <p>Basic website protection, SSL guidance aur secure form handling.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="icon">📈</div>
+        <h3>Digital Marketing</h3>
+        <p>SEO, social media planning aur online brand visibility improvement.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="icon">🎨</div>
+        <h3>Brand Design</h3>
+        <p>Logo, color theme, business identity aur professional UI design.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark-section" id="portfolio">
+    <p class="section-tag">Recent Work</p>
+    <h2>Portfolio</h2>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-card reveal">
+        <h3>Business Website</h3>
+        <p>Professional company website with contact form.</p>
+      </div>
+      <div class="portfolio-card reveal">
+        <h3>School Portal</h3>
+        <p>Student information and announcement UI concept.</p>
+      </div>
+      <div class="portfolio-card reveal">
+        <h3>IT Service Page</h3>
+        <p>Modern landing page for technical service provider.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pricing">
+    <p class="section-tag">Plans</p>
+    <h2>Website Packages</h2>
+
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <h3>Starter</h3>
+        <h4>₹2,999</h4>
+        <p>Basic business website</p>
+        <ul>
+          <li>5 Sections</li>
+          <li>Mobile Responsive</li>
+          <li>Contact Form UI</li>
+        </ul>
+      </div>
+
+      <div class="price-card featured reveal">
+        <h3>Professional</h3>
+        <h4>₹6,999</h4>
+        <p>Advanced business website</p>
+        <ul>
+          <li>8+ Sections</li>
+          <li>Animations</li>
+          <li>SEO Friendly Design</li>
+        </ul>
+      </div>
+
+      <div class="price-card reveal">
+        <h3>Premium</h3>
+        <h4>₹12,999</h4>
+        <p>Custom dynamic solution</p>
+        <ul>
+          <li>Admin Panel</li>
+          <li>Database</li>
+          <li>Custom Features</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq" id="faq">
+    <p class="section-tag">Questions</p>
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item reveal">
+      <button class="faq-question">Kya ye website mobile me chalegi? <span>+</span></button>
+      <p class="faq-answer">Haan, ye website fully responsive hai aur mobile, tablet, laptop sab par chalegi.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question">Kya isme backend hai? <span>+</span></button>
+      <p class="faq-answer">Ye version Node.js ke bina frontend version hai. Contact form local browser me demo alert show karega.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-question">Isko free me live kaise kar sakte hain? <span>+</span></button>
+      <p class="faq-answer">Aap Netlify, Vercel ya GitHub Pages par isko free me host kar sakte hain.</p>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <p class="section-tag">Contact</p>
+    <h2>Start Your Project</h2>
+
+    <form class="contact-form reveal" id="contactForm">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <select id="service">
+        <option>Website Development</option>
+        <option>Cyber Security Setup</option>
+        <option>Digital Marketing</option>
+        <option>Brand Design</option>
+      </select>
+      <textarea id="message" placeholder="Write your message..." required></textarea>
+      <button type="submit" class="btn primary">Send Message</button>
+      <p id="formMsg"></p>
+    </form>
+  </section>
+
+  <footer>
+    <h3>NorthBridge Solutions</h3>
+    <p>Technology aur Success ke beech ka Bridge.</p>
+    <p>© 2026 NorthBridge Solutions. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
