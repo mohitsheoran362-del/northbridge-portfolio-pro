@@ -3,74 +3,424 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NorthBridge | Digital Solutions</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="navbar">
-    <div class="logo">North<span>Bridge</span></div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-      <a href="/admin" class="admin-link">Admin</a>
-    </nav>
-  </header>
+  <title>NorthBridge</title>
 
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Segoe UI', Arial, sans-serif;
+    }
+
+    body{
+      background:#020617;
+      color:white;
+      scroll-behavior:smooth;
+    }
+
+    .navbar{
+      background:rgba(2,6,23,0.85);
+      backdrop-filter:blur(16px);
+      box-shadow:0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .logo,
+    .navbar-brand{
+      font-size:28px;
+      font-weight:800;
+      color:white;
+    }
+
+    .logo span,
+    .navbar-brand span{
+      color:#38bdf8;
+    }
+
+    .nav-link{
+      color:white !important;
+      font-weight:500;
+      margin-left:12px;
+    }
+
+    .nav-link:hover{
+      color:#38bdf8 !important;
+    }
+
+    .admin-link{
+      background:#38bdf8;
+      color:#020617 !important;
+      border-radius:25px;
+      padding:8px 18px !important;
+      font-weight:700;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      text-align:center;
+      background:
+      linear-gradient(rgba(2,6,23,0.75),rgba(2,6,23,0.95)),
+      url("https://images.unsplash.com/photo-1498050108023-c5249f4df085");
+      background-size:cover;
+      background-position:center;
+      padding-top:90px;
+    }
+
+    .tag{
+      display:inline-block;
+      background:rgba(56,189,248,0.15);
+      border:1px solid rgba(56,189,248,0.5);
+      color:#38bdf8;
+      padding:8px 20px;
+      border-radius:30px;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    .hero h1{
+      font-size:65px;
+      font-weight:900;
+      text-shadow:0 0 30px rgba(56,189,248,0.3);
+    }
+
+    .hero p{
+      font-size:20px;
+      color:#cbd5e1;
+    }
+
+    .btn{
+      background:#38bdf8;
+      color:#020617;
+      padding:12px 30px;
+      border-radius:30px;
+      font-weight:800;
+      text-decoration:none;
+      border:none;
+    }
+
+    .btn:hover{
+      background:white;
+      color:#020617;
+    }
+
+    .section{
+      padding:90px 0;
+    }
+
+    .section h2{
+      text-align:center;
+      font-size:42px;
+      font-weight:800;
+      margin-bottom:45px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+      width:90%;
+      margin:auto;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.15);
+      backdrop-filter:blur(18px);
+      color:white;
+      padding:30px;
+      border-radius:24px;
+      text-align:center;
+      transition:0.4s;
+      box-shadow:0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .card:hover{
+      transform:translateY(-12px);
+      box-shadow:0 25px 55px rgba(56,189,248,0.25);
+    }
+
+    .card h3{
+      color:#38bdf8;
+      font-weight:800;
+    }
+
+    .gallery{
+      background:#0f172a;
+    }
+
+    .gallery-text{
+      text-align:center;
+      color:#cbd5e1;
+      margin-top:-25px;
+      margin-bottom:40px;
+    }
+
+    .gallery-box{
+      width:90%;
+      margin:auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:25px;
+    }
+
+    .gallery-item{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:22px;
+      padding:12px;
+      overflow:hidden;
+      transition:0.4s;
+    }
+
+    .gallery-item:hover{
+      transform:scale(1.04);
+      box-shadow:0 20px 50px rgba(56,189,248,0.25);
+    }
+
+    .gallery-item img,
+    .gallery-item video{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      border-radius:18px;
+    }
+
+    .gallery-item a{
+      color:#38bdf8;
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    .about{
+      background:
+      linear-gradient(rgba(2,6,23,0.92),rgba(2,6,23,0.92)),
+      url("https://images.unsplash.com/photo-1551434678-e076c223a692");
+      background-size:cover;
+      background-position:center;
+      text-align:center;
+    }
+
+    .about p,
+    #contact p{
+      font-size:20px;
+      color:#cbd5e1;
+      text-align:center;
+    }
+
+    #contact{
+      background:#020617;
+    }
+
+    footer{
+      background:#000;
+      color:#94a3b8;
+      text-align:center;
+      padding:25px;
+    }
+
+    @media(max-width:768px){
+      .hero h1{
+        font-size:42px;
+      }
+
+      .hero p{
+        font-size:17px;
+      }
+
+      .section h2{
+        font-size:32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">North<span>Bridge</span></a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <nav class="navbar-nav ms-auto">
+          <a class="nav-link" href="#home">Home</a>
+          <a class="nav-link" href="#services">Services</a>
+          <a class="nav-link" href="#gallery">Gallery</a>
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#contact">Contact</a>
+          <a class="nav-link admin-link" href="login.html">Admin</a>
+        </nav>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
   <section id="home" class="hero">
-    <div>
-      <p class="tag">Smart Dynamic Website</p>
+    <div class="container">
+      <p class="tag">Smart Legend Bridge</p>
       <h1>Welcome to NorthBridge</h1>
-      <p>Hum businesses ke liye modern, secure aur fast digital solutions banate hain.</p>
-      <a href="#contact" class="btn">Get Started</a>
+      <p>“Friends are the family we choose for ourselves.”</p>
     </div>
   </section>
 
+  <!-- Services -->
   <section id="services" class="section">
     <h2>Our Services</h2>
+
     <div class="cards">
       <div class="card">
-        <h3>Website Development</h3>
-        <p>Responsive business, portfolio aur dynamic websites.</p>
+        <i class="bi bi-emoji-laughing fs-1 mb-3 text-info"></i>
+        <h3>Funny Things</h3>
+        <p>Hum kisi bhi cheez ko funny banate hain.</p>
       </div>
+
       <div class="card">
-        <h3>Digital Marketing</h3>
-        <p>SEO, social media aur online growth planning.</p>
+        <i class="bi bi-person-badge fs-1 mb-3 text-info"></i>
+        <h3>Nick Name</h3>
+        <p>All are Wild Bull Elephants.</p>
       </div>
+
       <div class="card">
-        <h3>IT Support</h3>
-        <p>Technical support, setup aur security guidance.</p>
+        <i class="bi bi-lightning-charge fs-1 mb-3 text-info"></i>
+        <h3>Angry Young Man</h3>
+        <p>Vijay Chauhan.</p>
       </div>
     </div>
   </section>
 
+  <!-- Gallery -->
+  <section id="gallery" class="section gallery">
+    <h2>Our Memories Gallery</h2>
+    <p class="gallery-text">Yaha hum apne friends ke photos aur videos add kar sakte hain.</p>
+
+    <div class="gallery-box">
+
+      <div class="gallery-item">
+        <img src="images/photo1.jpg" alt="Friend Photo 1">
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/photo2.jpg" alt="Friend Photo 2">
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/photo3.jpg" alt="Friend Photo 3">
+      </div>
+
+      <div id="firebaseGallery" class="gallery-box"></div>
+
+      <div class="gallery-item">
+        <video controls>
+          <source src="videos/video1.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div id="uploadedGallery" class="gallery-box"></div>
+
+      <div class="gallery-item">
+        <video controls>
+          <source src="videos/video2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About -->
   <section id="about" class="section about">
-    <h2>About NorthBridge</h2>
-    <p>NorthBridge ka goal hai clients ko simple language me powerful technology provide karna. Yeh website dynamic hai kyunki contact form ka data backend me save hota hai aur admin panel me show hota hai.</p>
+    <div class="container">
+      <h2>About NorthBridge</h2>
+      <p>ADP Pre Course No-13 Ke Sabhi Cheteh Balak Hai Yaha.</p>
+    </div>
   </section>
 
+  <!-- Contact -->
   <section id="contact" class="section">
-    <h2>Contact Us</h2>
-    <form id="contactForm" class="form">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <select name="service">
-        <option>Website Development</option>
-        <option>Digital Marketing</option>
-        <option>IT Support</option>
-        <option>Other</option>
-      </select>
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-      <p id="formStatus"></p>
-    </form>
+    <div class="container">
+      <h2>Contact</h2>
+      <p>9588103917 | Mohit2714216@gmail.com</p>
+    </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>© 2026 NorthBridge. All Rights Reserved.</p>
   </footer>
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Your old JS files -->
   <script src="script.js"></script>
+  <script type="module" src="app.js"></script>
+
+  <!-- LocalStorage Gallery -->
+  <script>
+    const uploadedGallery = document.getElementById("uploadedGallery");
+    const files = JSON.parse(localStorage.getItem("uploadedFiles")) || [];
+
+    files.forEach(file => {
+      let box = document.createElement("div");
+      box.className = "gallery-item";
+
+      if (file.type.startsWith("image")) {
+        box.innerHTML = `<img src="${file.data}" alt="Uploaded Photo">`;
+      } 
+      else if (file.type.startsWith("video")) {
+        box.innerHTML = `<video controls src="${file.data}"></video>`;
+      } 
+      else {
+        box.innerHTML = `<a href="${file.data}" download="${file.name}">📄 ${file.name}</a>`;
+      }
+
+      uploadedGallery.appendChild(box);
+    });
+  </script>
+
+  <!-- Firebase Gallery -->
+  <script type="module">
+    import { db } from "./firebase.js";
+    import { collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseGallery = document.getElementById("firebaseGallery");
+
+    async function loadFirebaseGallery() {
+      firebaseGallery.innerHTML = "";
+
+      const q = query(collection(db, "uploads"), orderBy("createdAt", "desc"));
+      const querySnapshot = await getDocs(q);
+
+      querySnapshot.forEach((doc) => {
+        const file = doc.data();
+        const box = document.createElement("div");
+        box.className = "gallery-item";
+
+        if (file.type.startsWith("image")) {
+          box.innerHTML = `<img src="${file.url}" alt="${file.name}">`;
+        } else if (file.type.startsWith("video")) {
+          box.innerHTML = `<video controls src="${file.url}"></video>`;
+        } else {
+          box.innerHTML = `<a href="${file.url}" target="_blank">📄 ${file.name}</a>`;
+        }
+
+        firebaseGallery.appendChild(box);
+      });
+    }
+
+    loadFirebaseGallery();
+  </script>
+
 </body>
 </html>
