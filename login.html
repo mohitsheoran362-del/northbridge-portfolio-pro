@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Friends Login</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#0f1028,#1b1b4d,#3b0a57);
+      overflow:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:absolute;
+      width:450px;
+      height:450px;
+      background:#ff2f8b;
+      border-radius:50%;
+      filter:blur(120px);
+      top:-100px;
+      left:-100px;
+    }
+
+    body::after{
+      content:"";
+      position:absolute;
+      width:450px;
+      height:450px;
+      background:#00d4ff;
+      border-radius:50%;
+      filter:blur(120px);
+      bottom:-100px;
+      right:-100px;
+    }
+
+    .login-box{
+      position:relative;
+      z-index:1;
+      width:420px;
+      padding:45px 35px;
+      text-align:center;
+      border-radius:25px;
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(18px);
+      border:1px solid rgba(255,255,255,0.25);
+      box-shadow:0 0 50px rgba(255,47,139,0.45);
+    }
+
+    .login-box h1{
+      color:white;
+      font-size:28px;
+      margin-bottom:30px;
+      text-shadow:0 0 15px #ff4fa3;
+    }
+
+    .login-box input{
+      width:100%;
+      padding:16px;
+      margin:12px 0;
+      border:none;
+      outline:none;
+      border-radius:14px;
+      font-size:16px;
+      color:white;
+      background:rgba(255,255,255,0.18);
+      border:1px solid rgba(255,255,255,0.35);
+    }
+
+    .login-box input::placeholder{
+      color:#eeeeee;
+    }
+
+    .login-box input:focus{
+      box-shadow:0 0 18px #00d4ff;
+    }
+
+    .login-box button{
+      width:100%;
+      padding:16px;
+      margin-top:18px;
+      border:none;
+      border-radius:14px;
+      font-size:18px;
+      font-weight:bold;
+      cursor:pointer;
+      color:white;
+      background:linear-gradient(45deg,#ff2f8b,#ff7b00);
+      box-shadow:0 0 25px rgba(255,47,139,0.8);
+      transition:0.3s;
+    }
+
+    .login-box button:hover{
+      transform:scale(1.06);
+      box-shadow:0 0 40px rgba(255,123,0,1);
+    }
+
+    #message{
+      color:#ffdddd;
+      margin-top:15px;
+      font-weight:bold;
+    }
+
+    .hearts{
+      position:absolute;
+      font-size:35px;
+      animation:float 6s infinite ease-in-out;
+      opacity:0.8;
+    }
+
+    .h1{top:10%; left:15%;}
+    .h2{top:75%; left:20%; animation-delay:1s;}
+    .h3{top:20%; right:18%; animation-delay:2s;}
+    .h4{bottom:12%; right:25%; animation-delay:3s;}
+
+    @keyframes float{
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-30px);}
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hearts h1">💖</div>
+  <div class="hearts h2">💕</div>
+  <div class="hearts h3">💘</div>
+  <div class="hearts h4">💝</div>
+
+  <div class="login-box">
+    <h1>❤️ Friends Forever Memories ❤️</h1>
+
+    <input id="username" type="text" placeholder="Enter Username">
+    <input id="password" type="password" placeholder="Enter Password">
+
+    <button onclick="login()">Login</button>
+    
+    <p id="message"></p>
+  </div>
+
+  <script>
+    function login() {
+      let username = document.getElementById("username").value.trim();
+      let password = document.getElementById("password").value.trim();
+
+      const users = [
+        { username: "Ankit4Gdrs", password: "Ankit#123" },
+        { username: "Laxman15Gdrs", password: "Laxman#123" },
+        { username: "Chetan18Gdrs", password: "Chetan#123" },
+        { username: "Vijay11Gdrs", password: "Vijay#123" },
+        { username: "Amit19Gdrs", password: "Amit#123" },
+        { username: "Mohit22Gdrs", password: "Mohit#123" }
+      ];
+
+      const validUser = users.find(user => user.username === username && user.password === password);
+
+      if (validUser) {
+        localStorage.setItem("loggedIn", "true");
+        localStorage.setItem("username", username);
+        window.location.href = "admin.html";
+      } else {
+        document.getElementById("message").innerText = "Wrong username or password";
+      }
+    }
+  </script>
+
+</body>
+</html>
