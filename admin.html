@@ -1,189 +1,367 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NorthBridge Solutions | Advanced Website</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Upload Panel</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Segoe UI', Arial, sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      background:
+      radial-gradient(circle at top left,#ff2f8b55,transparent 35%),
+      radial-gradient(circle at bottom right,#00d4ff55,transparent 35%),
+      linear-gradient(135deg,#020617,#1b1b4d,#3b0a57);
+      color:white;
+      padding:25px;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:#ff2f8b;
+      border-radius:50%;
+      filter:blur(140px);
+      top:-180px;
+      left:-180px;
+      opacity:.6;
+      z-index:-1;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      width:500px;
+      height:500px;
+      background:#00d4ff;
+      border-radius:50%;
+      filter:blur(140px);
+      bottom:-180px;
+      right:-180px;
+      opacity:.6;
+      z-index:-1;
+    }
+
+    .admin-box{
+      max-width:1100px;
+      margin:auto;
+      background:rgba(255,255,255,0.12);
+      backdrop-filter:blur(22px);
+      border:1px solid rgba(255,255,255,0.22);
+      border-radius:30px;
+      padding:32px;
+      box-shadow:0 0 55px rgba(255,47,139,0.35);
+    }
+
+    .top-title{
+      font-size:36px;
+      font-weight:900;
+      text-shadow:0 0 20px rgba(255,47,139,0.8);
+    }
+
+    .user-badge{
+      display:inline-block;
+      background:rgba(56,189,248,0.18);
+      border:1px solid rgba(56,189,248,0.45);
+      padding:10px 22px;
+      border-radius:30px;
+      color:#dbeafe;
+      margin:10px 0 25px;
+      font-weight:700;
+    }
+
+    .upload-card{
+      background:rgba(255,255,255,0.10);
+      border:1px solid rgba(255,255,255,0.2);
+      border-radius:24px;
+      padding:25px;
+    }
+
+    .form-control{
+      background:rgba(255,255,255,0.15);
+      color:white;
+      border:1px solid rgba(255,255,255,0.3);
+      padding:14px;
+      border-radius:14px;
+    }
+
+    .form-control:focus{
+      background:rgba(255,255,255,0.22);
+      color:white;
+      border-color:#00d4ff;
+      box-shadow:0 0 18px rgba(0,212,255,.8);
+    }
+
+    .btn-main{
+      background:linear-gradient(45deg,#ff2f8b,#ff7b00);
+      color:white;
+      border:none;
+      border-radius:14px;
+      padding:13px 24px;
+      font-weight:900;
+      box-shadow:0 0 25px rgba(255,47,139,0.65);
+      transition:.3s;
+      text-decoration:none;
+      display:inline-block;
+    }
+
+    .btn-main:hover{
+      transform:translateY(-3px);
+      color:white;
+      box-shadow:0 0 40px rgba(255,123,0,1);
+    }
+
+    .btn-view{
+      background:linear-gradient(45deg,#00d4ff,#2563eb);
+    }
+
+    .btn-logout{
+      background:linear-gradient(45deg,#ef4444,#991b1b);
+    }
+
+    #msg{
+      margin-top:18px;
+      font-weight:800;
+      color:#dbeafe;
+      min-height:25px;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:22px;
+      margin-top:35px;
+    }
+
+    .item{
+      background:rgba(255,255,255,0.12);
+      border:1px solid rgba(255,255,255,0.22);
+      padding:14px;
+      border-radius:22px;
+      transition:.35s;
+      overflow:hidden;
+      box-shadow:0 10px 25px rgba(0,0,0,.25);
+    }
+
+    .item:hover{
+      transform:translateY(-8px) scale(1.02);
+      box-shadow:0 20px 45px rgba(0,212,255,.25);
+    }
+
+    .item img,
+    .item video{
+      width:100%;
+      height:190px;
+      object-fit:cover;
+      border-radius:16px;
+      margin-bottom:12px;
+    }
+
+    .item p{
+      font-size:14px;
+      word-break:break-word;
+      margin-bottom:6px;
+      color:#e5e7eb;
+    }
+
+    .file-link{
+      display:inline-block;
+      margin-top:10px;
+      background:#38bdf8;
+      color:#020617;
+      padding:9px 16px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .file-link:hover{
+      background:white;
+      color:#020617;
+    }
+
+    .section-heading{
+      margin-top:35px;
+      font-size:28px;
+      font-weight:900;
+      text-align:left;
+    }
+
+    @media(max-width:576px){
+      body{
+        padding:12px;
+      }
+
+      .admin-box{
+        padding:22px;
+      }
+
+      .top-title{
+        font-size:28px;
+      }
+
+      .btn-main{
+        width:100%;
+        margin-top:10px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <header class="header">
-    <a href="#" class="logo">North<span>Bridge</span></a>
 
-    <nav class="navbar" id="navbar">
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<script>
+  if (localStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
 
-    <div class="header-actions">
-      <button id="themeBtn" class="icon-btn">🌙</button>
-      <button id="menuBtn" class="menu-btn">☰</button>
-    </div>
-  </header>
+<div class="admin-box">
 
-  <section class="hero" id="home">
-    <div class="hero-content reveal">
-      <p class="badge">Advanced Digital Solutions</p>
-      <h1>Build Your Business Online With <span>NorthBridge</span></h1>
-      <p class="hero-text">
-        Hum modern websites, IT support, branding aur digital growth solutions provide karte hain.
-        Fast, secure aur mobile-friendly website ke sath apna business next level par le jaiye.
-      </p>
-      <div class="hero-buttons">
-        <a href="#contact" class="btn primary">Start Project</a>
-        <a href="#services" class="btn secondary">View Services</a>
-      </div>
-    </div>
+  <div class="text-center">
+    <h1 class="top-title">
+      <i class="bi bi-cloud-arrow-up-fill"></i> Admin / Edit Panel
+    </h1>
 
-    <div class="hero-card reveal">
-      <h3>Live Project Stats</h3>
-      <div class="stat"><span>25+</span><p>Projects Completed</p></div>
-      <div class="stat"><span>99%</span><p>Client Satisfaction</p></div>
-      <div class="stat"><span>24/7</span><p>Support Available</p></div>
-    </div>
-  </section>
+    <p class="user-badge">
+      <i class="bi bi-person-circle"></i>
+      Welcome: <b id="userName"></b>
+    </p>
+  </div>
 
-  <section class="section" id="services">
-    <p class="section-tag">What We Do</p>
-    <h2>Our Services</h2>
+  <div class="upload-card text-center">
+    <h4 class="fw-bold mb-3">
+      <i class="bi bi-folder-plus"></i> Upload Memories
+    </h4>
 
-    <div class="grid">
-      <div class="service-card reveal">
-        <div class="icon">💻</div>
-        <h3>Website Development</h3>
-        <p>Business, portfolio, landing page aur responsive website design.</p>
-      </div>
+    <input class="form-control" type="file" id="fileInput" multiple accept="image/*,video/*,.pdf,.doc,.docx,.txt">
 
-      <div class="service-card reveal">
-        <div class="icon">🔐</div>
-        <h3>Cyber Security Setup</h3>
-        <p>Basic website protection, SSL guidance aur secure form handling.</p>
-      </div>
+    <div class="mt-4 d-flex flex-wrap justify-content-center gap-3">
+      <button class="btn-main" onclick="uploadFiles()">
+        <i class="bi bi-upload"></i> Upload
+      </button>
 
-      <div class="service-card reveal">
-        <div class="icon">📈</div>
-        <h3>Digital Marketing</h3>
-        <p>SEO, social media planning aur online brand visibility improvement.</p>
-      </div>
+      <a class="btn-main btn-view" href="index.html">
+        <i class="bi bi-eye-fill"></i> View Website
+      </a>
 
-      <div class="service-card reveal">
-        <div class="icon">🎨</div>
-        <h3>Brand Design</h3>
-        <p>Logo, color theme, business identity aur professional UI design.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section dark-section" id="portfolio">
-    <p class="section-tag">Recent Work</p>
-    <h2>Portfolio</h2>
-
-    <div class="portfolio-grid">
-      <div class="portfolio-card reveal">
-        <h3>Business Website</h3>
-        <p>Professional company website with contact form.</p>
-      </div>
-      <div class="portfolio-card reveal">
-        <h3>School Portal</h3>
-        <p>Student information and announcement UI concept.</p>
-      </div>
-      <div class="portfolio-card reveal">
-        <h3>IT Service Page</h3>
-        <p>Modern landing page for technical service provider.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="pricing">
-    <p class="section-tag">Plans</p>
-    <h2>Website Packages</h2>
-
-    <div class="pricing-grid">
-      <div class="price-card reveal">
-        <h3>Starter</h3>
-        <h4>₹2,999</h4>
-        <p>Basic business website</p>
-        <ul>
-          <li>5 Sections</li>
-          <li>Mobile Responsive</li>
-          <li>Contact Form UI</li>
-        </ul>
-      </div>
-
-      <div class="price-card featured reveal">
-        <h3>Professional</h3>
-        <h4>₹6,999</h4>
-        <p>Advanced business website</p>
-        <ul>
-          <li>8+ Sections</li>
-          <li>Animations</li>
-          <li>SEO Friendly Design</li>
-        </ul>
-      </div>
-
-      <div class="price-card reveal">
-        <h3>Premium</h3>
-        <h4>₹12,999</h4>
-        <p>Custom dynamic solution</p>
-        <ul>
-          <li>Admin Panel</li>
-          <li>Database</li>
-          <li>Custom Features</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section faq" id="faq">
-    <p class="section-tag">Questions</p>
-    <h2>Frequently Asked Questions</h2>
-
-    <div class="faq-item reveal">
-      <button class="faq-question">Kya ye website mobile me chalegi? <span>+</span></button>
-      <p class="faq-answer">Haan, ye website fully responsive hai aur mobile, tablet, laptop sab par chalegi.</p>
+      <button class="btn-main btn-logout" onclick="logout()">
+        <i class="bi bi-box-arrow-right"></i> Logout
+      </button>
     </div>
 
-    <div class="faq-item reveal">
-      <button class="faq-question">Kya isme backend hai? <span>+</span></button>
-      <p class="faq-answer">Ye version Node.js ke bina frontend version hai. Contact form local browser me demo alert show karega.</p>
-    </div>
+    <p id="msg"></p>
+  </div>
 
-    <div class="faq-item reveal">
-      <button class="faq-question">Isko free me live kaise kar sakte hain? <span>+</span></button>
-      <p class="faq-answer">Aap Netlify, Vercel ya GitHub Pages par isko free me host kar sakte hain.</p>
-    </div>
-  </section>
+  <h2 class="section-heading">
+    <i class="bi bi-images"></i> Uploaded Gallery
+  </h2>
 
-  <section class="section contact" id="contact">
-    <p class="section-tag">Contact</p>
-    <h2>Start Your Project</h2>
+  <div id="adminGallery" class="gallery"></div>
 
-    <form class="contact-form reveal" id="contactForm">
-      <input type="text" id="name" placeholder="Your Name" required />
-      <input type="email" id="email" placeholder="Your Email" required />
-      <select id="service">
-        <option>Website Development</option>
-        <option>Cyber Security Setup</option>
-        <option>Digital Marketing</option>
-        <option>Brand Design</option>
-      </select>
-      <textarea id="message" placeholder="Write your message..." required></textarea>
-      <button type="submit" class="btn primary">Send Message</button>
-      <p id="formMsg"></p>
-    </form>
-  </section>
+</div>
 
-  <footer>
-    <h3>NorthBridge Solutions</h3>
-    <p>Technology aur Success ke beech ka Bridge.</p>
-    <p>© 2026 NorthBridge Solutions. All rights reserved.</p>
-  </footer>
+<script type="module">
+  import { storage, db } from "./firebase.js";
+  import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+  import { collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-  <script src="script.js"></script>
+  const username = localStorage.getItem("username");
+  document.getElementById("userName").innerText = username;
+
+  window.uploadFiles = async function () {
+    const input = document.getElementById("fileInput");
+    const msg = document.getElementById("msg");
+
+    if (input.files.length === 0) {
+      msg.innerText = "Pehle file select karo.";
+      return;
+    }
+
+    msg.innerText = "Uploading...";
+
+    for (let file of input.files) {
+      const filePath = `uploads/${Date.now()}-${file.name}`;
+      const storageRef = ref(storage, filePath);
+
+      await uploadBytes(storageRef, file);
+      const url = await getDownloadURL(storageRef);
+
+      await addDoc(collection(db, "uploads"), {
+        name: file.name,
+        type: file.type,
+        url: url,
+        uploadedBy: username,
+        createdAt: serverTimestamp()
+      });
+    }
+
+    msg.innerText = "Upload complete!";
+    input.value = "";
+    loadFiles();
+  };
+
+  async function loadFiles() {
+    const gallery = document.getElementById("adminGallery");
+    gallery.innerHTML = "";
+
+    const q = query(collection(db, "uploads"), orderBy("createdAt", "desc"));
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      const file = doc.data();
+      const box = document.createElement("div");
+      box.className = "item";
+
+      if (file.type.startsWith("image")) {
+        box.innerHTML = `
+          <img src="${file.url}">
+          <p><b>${file.name}</b></p>
+          <p>By: ${file.uploadedBy}</p>
+        `;
+      } else if (file.type.startsWith("video")) {
+        box.innerHTML = `
+          <video controls src="${file.url}"></video>
+          <p><b>${file.name}</b></p>
+          <p>By: ${file.uploadedBy}</p>
+        `;
+      } else {
+        box.innerHTML = `
+          <p style="font-size:38px;">📄</p>
+          <p><b>${file.name}</b></p>
+          <p>By: ${file.uploadedBy}</p>
+          <a class="file-link" href="${file.url}" target="_blank">
+            Open / Download
+          </a>
+        `;
+      }
+
+      gallery.appendChild(box);
+    });
+  }
+
+  window.logout = function () {
+    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("username");
+    window.location.href = "login.html";
+  };
+
+  loadFiles();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
